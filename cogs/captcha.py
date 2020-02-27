@@ -122,6 +122,7 @@ class captcha(commands.Cog):
                         await member.add_roles(member.guild.get_role(679026175762235403)) 
                         await asyncio.sleep(3)
                         await embed_enviado.delete()
+                        break
                     
                     elif not resposta.content == str(numeros):
                         tentativas += 1
