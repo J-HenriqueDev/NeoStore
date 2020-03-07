@@ -3,6 +3,7 @@ import asyncio
 import inspect
 import discord
 import json
+from contextlib import redirect_stdout
 from io import StringIO
 import traceback
 import textwrap
