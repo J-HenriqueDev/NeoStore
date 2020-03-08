@@ -64,7 +64,7 @@ class captcha(commands.Cog):
             canal = discord.utils.get(member.guild.channels, name='🔑│captcha')
             canal_boasvindas = discord.utils.get(member.guild.channels, name='💥│bem-vindo')
             await member.add_roles(member.guild.get_role(679026020543889420))
-            await canal_boasvindas.send(f'{member.mention}, seja bem vindo ao botmann Haus, leia as regras e seja feliz <3')
+            #await canal_boasvindas.send(f'{member.mention}, seja bem vindo ao botmann Haus, leia as regras e seja feliz <3')
             try:
                 numeros = randint(1000,10000)
                 image = ImageCaptcha()
@@ -126,18 +126,19 @@ class captcha(commands.Cog):
                     
                     elif not resposta.content == str(numeros):
                         tentativas += 1
-                        await canal.send(f"**Você errou o captcha pqp otário**\nTentativa: `{tentativas}/5`", delete_after=60)
+                        await canal.send(f"**Você errou o captcha pqp otário,tente novamente.**\nTentativa: `{tentativas}/5`", delete_after=60)
                     else:
                         nome = resposta.content        
  
                 if not nome:
                     return self.formulario.remove(member.id)
 
+                
                 await canal.send('**Catpcha concluido com sucesso.**\n**Agora você se tornou um membro.**')
                 await member.remove_roles(member.guild.get_role(679026020543889420))
                 await member.add_roles(member.guild.get_role(679026175762235403))
                 await embed_enviado.delete()
-
+                await canal.purge(limit=100)
             except Exception as e:
                 print(e)
 
